@@ -15,6 +15,7 @@ func _ready():
 	var material = %SoftBody3D.get_surface_override_material(0).duplicate()
 	material.albedo_color = device.color
 	%SoftBody3D.set_surface_override_material(0, material)
+	%Arrow.set_color(device.color)
 
 func _physics_process(_delta: float) -> void:
 	const FORCE_MAGNITUDE = 10 # used to adjust magnitude of force
@@ -32,6 +33,7 @@ func _physics_process(_delta: float) -> void:
 		or Input.is_action_pressed(device.inputs.UP)
 		or Input.is_action_pressed(device.inputs.DOWN)):
 
+		%Arrow.activate(direction.normalized(), direction.length())
 		# Split force applied between "spinning" top force and central	
 		%RigidBody3D.apply_force(force_vector * 0.8, force_position)
 		%RigidBody3D.apply_central_force(force_vector * 0.2)
@@ -46,6 +48,8 @@ func _physics_process(_delta: float) -> void:
 		# Add counteracting force in the direction of the midpoint between the applied force
 		# direction and the opposite of the current linear velocity
 		%RigidBody3D.apply_central_force(get_mid_vector(%RigidBody3D.linear_velocity  * -1, force_vector) * 15 * turning_factor)
+	else:
+		%Arrow.deactivate()
 	self.previous_linear_velocity = %RigidBody3D.linear_velocity
 
 func dead_test() -> void:
