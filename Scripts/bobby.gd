@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 var device
+var can_boost: bool = true
 
 func get_mid_vector(v1, v2):
 	return (v1 + v2)/2;
@@ -20,6 +21,10 @@ func _physics_process(_delta: float) -> void:
 	var force_vector = Vector3(direction.x, 0, direction.y) * FORCE_MAGNITUDE
 	var force_position = Vector3(0, radius, 0)
 	%RigidBody3D.linear_damp = 0;
+	if (can_boost and Input.is_action_just_pressed(device.inputs.BOOST)):
+		can_boost = false
+		$BoostTimer.start()
+		%RigidBody3D.apply_central_impulse(Vector3(direction.x, 0, direction.y) * 40)
 	if (Input.is_action_pressed(device.inputs.LEFT)
 		or Input.is_action_pressed(device.inputs.RIGHT)
 		or Input.is_action_pressed(device.inputs.UP)
@@ -42,3 +47,7 @@ func _physics_process(_delta: float) -> void:
 
 func dead_test() -> void:
 	$"..".queue_free()
+
+
+func _on_boost_timer_timeout() -> void:
+	can_boost = true
