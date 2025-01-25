@@ -103,4 +103,4 @@ func _on_body_entered(body):
 
 	# Todo apply force at point of collison rather than centrally
 	const KNOCKBACK_MULTIPLIER = 6
-	%RigidBody3D.apply_central_impulse(body_to_self * body_lv.length() * KNOCKBACK_MULTIPLIER)
+	%RigidBody3D.apply_central_impulse(body_to_self * clamp(body_lv.length() * KNOCKBACK_MULTIPLIER, 0, 40))
