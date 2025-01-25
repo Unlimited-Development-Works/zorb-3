@@ -6,7 +6,13 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hski"]
 transparency = 1
-albedo_color = Color(0.662745, 0.188235, 0.105882, 0.784314)
+albedo_color = Color(0.592067, 0.162822, 0.0887077, 0.848)
+metallic = 0.25
+metallic_specular = 0.6
+emission_enabled = true
+emission = Color(0.111197, 0.111197, 0.111197, 1)
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0gt2e"]
 height = 10.0
