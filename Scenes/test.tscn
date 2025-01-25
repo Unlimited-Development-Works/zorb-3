@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=8 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Texture2D" uid="uid://cxbbegy0rpe5k" path="res://Graphics/blue-water.jpg" id="1_w1adn"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="PackedScene" uid="uid://tdtfd0ptngjn" path="res://Scenes/bobby.tscn" id="3_iietq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
+friction = 0.75
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcj3v"]
 size = Vector3(60, 2, 60)
@@ -18,6 +21,7 @@ size = Vector3(60, 2, 60)
 
 [node name="Water" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47495, 0)
+physics_material_override = SubResource("PhysicsMaterial_bx05t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719727, 0, 0)
@@ -31,7 +35,7 @@ transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 5)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 15)
 
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
 transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0, -0.258819, 0.965926, 3.2692, 2.56261, -4.45823)
