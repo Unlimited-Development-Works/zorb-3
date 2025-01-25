@@ -22,3 +22,6 @@ func _physics_process(delta: float) -> void:
 		or Input.is_action_pressed(device.inputs.UP) 
 		or Input.is_action_pressed(device.inputs.DOWN)):
 		%RigidBody3D.apply_force(force_vector, force_position)
+
+func dead_test() -> void:
+	$"..".queue_free()

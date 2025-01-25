@@ -12,6 +12,8 @@ func _process(delta: float) -> void:
 	# print(delta)
 	if %CSGTorus3D.inner_radius > min_size:
 		%CSGTorus3D.inner_radius -= delta
+		%deathRing.scale.x = %CSGTorus3D.inner_radius
+		%deathRing.scale.z = %CSGTorus3D.inner_radius
 		%CSGTorus3D.outer_radius = %CSGTorus3D.inner_radius + 30
 	else:
 		%CSGTorus3D.inner_radius = min_size
@@ -27,8 +29,6 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_3d_2_body_shape_exited(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
-	print("exited body_rid")
-	print(body)
 	if body.has_method("dead_test"):
 		body.dead_test()
 	else:

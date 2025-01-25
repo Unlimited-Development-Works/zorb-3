@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=9 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Texture2D" uid="uid://cxbbegy0rpe5k" path="res://Graphics/blue-water.jpg" id="1_w1adn"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
@@ -36,7 +36,7 @@ transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 15)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 30, 30)
 
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
 transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0, -0.258819, 0.965926, 3.2692, 2.56261, -4.45823)

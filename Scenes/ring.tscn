@@ -9,8 +9,13 @@ transparency = 1
 albedo_color = Color(0.662745, 0.188235, 0.105882, 0.784314)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0gt2e"]
+height = 10.0
+radius = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bnuq5"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 10.0
 
 [node name="Ring" type="Node3D"]
 script = ExtResource("1_ncdgy")
@@ -22,7 +27,6 @@ shape = SubResource("CylinderShape3D_83q0i")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="Area3D/CollisionShape3D"]
 unique_name_in_owner = true
-use_collision = true
 inner_radius = 50.0
 outer_radius = 80.0
 sides = 64
@@ -34,9 +38,11 @@ wait_time = 5.0
 [node name="Area3D2" type="Area3D" parent="."]
 
 [node name="deathRing" type="CollisionShape3D" parent="Area3D2"]
+unique_name_in_owner = true
 shape = SubResource("CylinderShape3D_0gt2e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2/deathRing"]
+visible = false
 mesh = SubResource("CylinderMesh_bnuq5")
 
 [connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
