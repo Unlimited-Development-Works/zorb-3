@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dl2mu2w10fmc6" path="res://Graphics/brick.jpg" id="2_b26d5"]
 [ext_resource type="Script" path="res://Scripts/bobby.gd" id="2_bar0h"]
 [ext_resource type="Texture2D" uid="uid://ct4hlplowuso2" path="res://Graphics/tank_arrowEmpty.png" id="2_ea7je"]
+[ext_resource type="ArrayMesh" uid="uid://cqdx3l58l7ugo" path="res://Objects/pirate_crew.obj" id="5_fq0ge"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sucfo"]
 transparency = 1
@@ -12,8 +13,6 @@ albedo_color = Color(0.227451, 0.262745, 0.266667, 0.521569)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pehn3"]
 radius = 0.845175
-
-[sub_resource type="SphereMesh" id="SphereMesh_wc6ex"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7w5kf"]
 albedo_texture = ExtResource("2_b26d5")
@@ -47,7 +46,8 @@ script = ExtResource("2_bar0h")
 shape = SubResource("SphereShape3D_pehn3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("SphereMesh_wc6ex")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.5, 0)
+mesh = ExtResource("5_fq0ge")
 skeleton = NodePath("../CollisionShape3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_7w5kf")
 
