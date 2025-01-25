@@ -1,6 +1,7 @@
 extends Node
 var min_size = 10
 var timer_started = false
+var ring_thickness = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,10 +15,10 @@ func _process(delta: float) -> void:
 		%CSGTorus3D.inner_radius -= delta
 		%deathRing.scale.x = %CSGTorus3D.inner_radius
 		%deathRing.scale.z = %CSGTorus3D.inner_radius
-		%CSGTorus3D.outer_radius = %CSGTorus3D.inner_radius + 30
+		%CSGTorus3D.outer_radius = %CSGTorus3D.inner_radius + ring_thickness
 	else:
 		%CSGTorus3D.inner_radius = min_size
-		%CSGTorus3D.outer_radius = %CSGTorus3D.inner_radius + 30
+		%CSGTorus3D.outer_radius = %CSGTorus3D.inner_radius + ring_thickness
 		if !timer_started:
 			$Timer.start()
 			timer_started = true

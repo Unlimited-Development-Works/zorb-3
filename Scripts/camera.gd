@@ -1,19 +1,22 @@
 extends Camera3D
 
-var zoom_min = 10
-var zoom_max = 100
-var movement_multiplier = 10
-var yz_multiplier = 1.5
+var movement_multiplier = 1
+@export var camera_start : Vector3
+@export var camera_end : Vector3 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	transform.origin.y = zoom_max * yz_multiplier
-	transform.origin.z = zoom_max
+	transform.origin.y = camera_start.y
+	transform.origin.z = camera_start.z
 	look_at(Vector3(0, 0, 0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if transform.origin.y > zoom_min or transform.origin.z > zoom_min:
-		transform.origin.y -=  (delta * yz_multiplier) * movement_multiplier
-		transform.origin.z -= delta * movement_multiplier
+	look_at(Vector3(0, 0, 0))
+	var difference = (camera_start.z - camera_end.z) / (camera_start.y - camera_end.y)
+	if transform.origin.y > camera_end.y:
+		transform.origin.y -= (delta * movement_multiplier) * difference
+	if transform.origin.z > camera_end.y:
+		transform.origin.z -= (delta * movement_multiplier)
+

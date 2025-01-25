@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=10 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Texture2D" uid="uid://cxbbegy0rpe5k" path="res://Graphics/blue-water.jpg" id="1_w1adn"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
 [ext_resource type="PackedScene" uid="uid://tdtfd0ptngjn" path="res://Scenes/bobby.tscn" id="3_iietq"]
-[ext_resource type="PackedScene" uid="uid://8qcs6ol7qvij" path="res://Scenes/ring.tscn" id="4_xed4k"]
+[ext_resource type="PackedScene" uid="uid://cs8yssj5qpx6s" path="res://Scenes/ring.tscn" id="4_xed4k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -37,8 +37,10 @@ transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.287327, -0.478916, 0.829507, 0, 0.866025, 0.5, -0.957833, 0.143664, -0.248833, 0, 20, 10)
+transform = Transform3D(1, 0, 0, 0, 0.207912, 0.978147, 0, -0.978147, 0.207912, 0, 57, 27.91)
 script = ExtResource("2_i3yo8")
+camera_start = Vector3(0, 70, 40)
+camera_end = Vector3(0, 20, 3)
 
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
 transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0, -0.258819, 0.965926, 3.2692, 2.56261, -4.45823)
