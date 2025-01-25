@@ -41,7 +41,7 @@ camera_start = Vector3(0, 28, 12)
 camera_end = Vector3(0, 20, 1)
 
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
-transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0, -0.258819, 0.965926, 3.2692, 2.56261, -4.45823)
+transform = Transform3D(1.93185, 0.5, 0.133974, -0.517638, 1.86603, 0.5, 0, -0.517638, 1.93185, 3.2692, 2.56261, -4.45823)
 
 [node name="Bobby" parent="." instance=ExtResource("3_iietq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)

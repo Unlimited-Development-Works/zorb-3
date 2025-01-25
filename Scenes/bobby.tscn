@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dl2mu2w10fmc6" path="res://Graphics/brick.jpg" id="2_b26d5"]
 [ext_resource type="Script" path="res://Scripts/bobby.gd" id="2_bar0h"]
 [ext_resource type="Texture2D" uid="uid://ct4hlplowuso2" path="res://Graphics/tank_arrowEmpty.png" id="2_ea7je"]
-[ext_resource type="ArrayMesh" uid="uid://cqdx3l58l7ugo" path="res://Objects/pirate_crew.obj" id="5_fq0ge"]
+[ext_resource type="ArrayMesh" uid="uid://q445yh1sgirv" path="res://Objects/pirate_officer.obj" id="5_ux7ys"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sucfo"]
 transparency = 1
@@ -47,7 +47,7 @@ shape = SubResource("SphereShape3D_pehn3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.5, 0)
-mesh = ExtResource("5_fq0ge")
+mesh = ExtResource("5_ux7ys")
 skeleton = NodePath("../CollisionShape3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_7w5kf")
 
