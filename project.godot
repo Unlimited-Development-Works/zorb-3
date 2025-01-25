@@ -20,6 +20,89 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1800
 window/size/viewport_height=1200
 
+[input]
+
+P0_UP={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+]
+}
+P1_UP={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":1,"axis":1,"axis_value":-1.0,"script":null)
+]
+}
+P2_UP={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":2,"axis":1,"axis_value":-1.0,"script":null)
+]
+}
+P3_UP={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":3,"axis":1,"axis_value":-1.0,"script":null)
+]
+}
+P0_DOWN={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+]
+}
+P1_DOWN={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":1,"axis":1,"axis_value":1.0,"script":null)
+]
+}
+P2_DOWN={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":2,"axis":1,"axis_value":1.0,"script":null)
+]
+}
+P3_DOWN={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":3,"axis":1,"axis_value":1.0,"script":null)
+]
+}
+P0_LEFT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+]
+}
+P1_LEFT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":1,"axis":0,"axis_value":-1.0,"script":null)
+]
+}
+P2_LEFT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":2,"axis":0,"axis_value":-1.0,"script":null)
+]
+}
+P3_LEFT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":3,"axis":0,"axis_value":-1.0,"script":null)
+]
+}
+P0_RIGHT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+P1_RIGHT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":1,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+P2_RIGHT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":2,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+P3_RIGHT={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":3,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
