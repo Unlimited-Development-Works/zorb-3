@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://2eh3nosun1t3"]
+[gd_scene load_steps=4 format=3 uid="uid://2eh3nosun1t3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1gpe4"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggnqi"]
+albedo_color = Color(0.688592, 0.492123, 0.354554, 1)
+metallic = 0.59
+metallic_specular = 0.53
+
 [sub_resource type="BoxMesh" id="BoxMesh_dsyfk"]
+material = SubResource("StandardMaterial3D_ggnqi")
 
 [node name="Box" type="RigidBody3D"]
 mass = 0.1
