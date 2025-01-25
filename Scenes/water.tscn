@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://o84gwfi285nf"]
+
+[ext_resource type="Texture2D" uid="uid://cxbbegy0rpe5k" path="res://Graphics/blue-water.jpg" id="1_abcwi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g72c"]
+albedo_texture = ExtResource("1_abcwi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2jree"]
+material = SubResource("StandardMaterial3D_7g72c")
+size = Vector3(100, 1, 100)
+subdivide_width = 100
+subdivide_height = 5
+subdivide_depth = 100
+
+[node name="Water" type="Node3D"]
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+mesh = SubResource("BoxMesh_2jree")
+pinned_points = [1, 100, 200, 300]
+attachments/0/point_index = 1
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 100
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 200
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 300
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)

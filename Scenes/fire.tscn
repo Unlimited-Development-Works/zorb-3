@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvvurjwxxiur5"]
+
+[ext_resource type="Shader" uid="uid://ln6g7wexwxiy" path="res://Scenes/fire.tres" id="1_081c4"]
+[ext_resource type="Texture2D" uid="uid://bdpy0aa1b1yr7" path="res://Graphics/flame_01 (2).png" id="2_1vvur"]
+[ext_resource type="Texture2D" uid="uid://b2dextew3h6qo" path="res://Graphics/voronoi.jpeg" id="2_uotab"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj17l"]
+render_priority = 0
+shader = ExtResource("1_081c4")
+shader_parameter/DisolveTiming = Vector2(0.25, 0.2)
+shader_parameter/DisolveSpeed = Vector2(0, 0.54)
+shader_parameter/DisolveAmount = 0.71
+shader_parameter/MainTexture = ExtResource("2_1vvur")
+shader_parameter/DisolveTexture = ExtResource("2_uotab")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cl8wo"]
+gravity = Vector3(0, 0, 0)
+color = Color(5, 1.25, 0.6, 0.8)
+
+[sub_resource type="QuadMesh" id="QuadMesh_mek4u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5uc30"]
+
+[node name="Fire" type="Node3D"]
+
+[node name="StaticFlame" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_fj17l")
+amount = 1
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_cl8wo")
+draw_pass_1 = SubResource("QuadMesh_mek4u")
+
+[node name="Area3D" type="Area3D" parent="StaticFlame"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticFlame/Area3D"]
+shape = SubResource("BoxShape3D_5uc30")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=9 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Texture2D" uid="uid://cxbbegy0rpe5k" path="res://Graphics/blue-water.jpg" id="1_w1adn"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="PackedScene" uid="uid://tdtfd0ptngjn" path="res://Scenes/bobby.tscn" id="3_iietq"]
+[ext_resource type="PackedScene" uid="uid://dr07j6leplv23" path="res://Scenes/mood.tscn" id="4_5kwf6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -42,3 +43,5 @@ transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0,
 
 [node name="Bobby" parent="." instance=ExtResource("3_iietq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
+
+[node name="Scene" parent="." instance=ExtResource("4_5kwf6")]
