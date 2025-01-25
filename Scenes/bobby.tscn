@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://tdtfd0ptngjn"]
+[gd_scene load_steps=8 format=3 uid="uid://2wa0h4xywebf"]
 
 [ext_resource type="ArrayMesh" uid="uid://dic1lik6uo6ch" path="res://Objects/zorb.obj" id="1_ig3sh"]
 [ext_resource type="Texture2D" uid="uid://dl2mu2w10fmc6" path="res://Graphics/brick.jpg" id="2_b26d5"]
@@ -38,3 +38,9 @@ shape = SubResource("SphereShape3D_pehn3")
 mesh = SubResource("SphereMesh_wc6ex")
 skeleton = NodePath("../CollisionShape3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_7w5kf")
+
+[node name="BoostTimer" type="Timer" parent="RigidBody3D"]
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]

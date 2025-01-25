@@ -37,6 +37,7 @@ static func get_device():
 			"DOWN": "P%s_DOWN" % id,
 			"LEFT": "P%s_LEFT" % id,
 			"RIGHT": "P%s_RIGHT" % id,
+			"BOOST": "P%s_BOOST" % id,
 		},
 		"color": DEVICE_COLORS[id], 
 	}
