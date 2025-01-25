@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://2wa0h4xywebf"]
+[gd_scene load_steps=6 format=3 uid="uid://2wa0h4xywebf"]
 
 [ext_resource type="ArrayMesh" uid="uid://dic1lik6uo6ch" path="res://Objects/zorb.obj" id="1_ig3sh"]
-[ext_resource type="Texture2D" uid="uid://dl2mu2w10fmc6" path="res://Graphics/brick.jpg" id="2_b26d5"]
 [ext_resource type="Script" path="res://Scripts/bobby.gd" id="2_bar0h"]
+[ext_resource type="ArrayMesh" uid="uid://cggb0fen7e3kg" path="res://Objects/pirate_crew.obj" id="3_6drq0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sucfo"]
 transparency = 1
@@ -10,11 +10,6 @@ albedo_color = Color(0.227451, 0.262745, 0.266667, 0.521569)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pehn3"]
 radius = 0.845175
-
-[sub_resource type="SphereMesh" id="SphereMesh_wc6ex"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7w5kf"]
-albedo_texture = ExtResource("2_b26d5")
 
 [node name="Bobby" type="Node3D"]
 
@@ -37,13 +32,13 @@ script = ExtResource("2_bar0h")
 shape = SubResource("SphereShape3D_pehn3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("SphereMesh_wc6ex")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.5, 0)
+mesh = ExtResource("3_6drq0")
 skeleton = NodePath("../CollisionShape3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_7w5kf")
 
 [node name="BoostTimer" type="Timer" parent="RigidBody3D"]
 process_callback = 0
 one_shot = true
 
-[connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]
 [connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]
+[connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]

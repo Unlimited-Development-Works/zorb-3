@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://chfby6taf7iy8"]
 
-[ext_resource type="Material" uid="uid://cg7rwfbhkgf3e" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
+[ext_resource type="Material" uid="uid://1ejc7iie8c82" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
 [ext_resource type="PackedScene" uid="uid://2wa0h4xywebf" path="res://Scenes/bobby.tscn" id="3_iietq"]
