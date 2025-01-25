@@ -6,7 +6,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sucfo"]
 transparency = 1
-albedo_color = Color(1, 0.243137, 1, 0.482353)
+albedo_color = Color(0.227451, 0.262745, 0.266667, 0.521569)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pehn3"]
 radius = 0.845175
@@ -19,6 +19,7 @@ albedo_texture = ExtResource("2_b26d5")
 [node name="Bobby" type="Node3D"]
 
 [node name="SoftBody3D" type="SoftBody3D" parent="."]
+unique_name_in_owner = true
 mesh = ExtResource("1_ig3sh")
 surface_material_override/0 = SubResource("StandardMaterial3D_sucfo")
 simulation_precision = 10
@@ -27,6 +28,7 @@ linear_stiffness = 0.1
 pressure_coefficient = 50.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_bar0h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
