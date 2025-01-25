@@ -29,6 +29,8 @@ pressure_coefficient = 50.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 unique_name_in_owner = true
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("2_bar0h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
@@ -44,3 +46,4 @@ process_callback = 0
 one_shot = true
 
 [connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]
+[connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]
