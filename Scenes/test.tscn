@@ -42,3 +42,6 @@ transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0,
 
 [node name="Bobby" parent="." instance=ExtResource("3_iietq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
+
+[node name="Bobby2" parent="." instance=ExtResource("3_iietq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6387, 0.189334, -7.65148)
