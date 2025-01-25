@@ -26,13 +26,10 @@ transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0
 shadow_enabled = true
 
 [node name="Zorb" parent="." instance=ExtResource("1_1jsm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.147306, 2.74471, -0.0588033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 5)
 
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
 transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0, -0.258819, 0.965926, 3.2692, 2.56261, -4.45823)
-
-[node name="Box2" parent="." instance=ExtResource("2_ggj2q")]
-transform = Transform3D(0.854495, -0.519459, 0, 0.471899, 0.77626, 0.41801, -0.217139, -0.357187, 0.908443, -0.180181, 4.98778, 1.30896)
