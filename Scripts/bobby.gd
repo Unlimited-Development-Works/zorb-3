@@ -40,4 +40,5 @@ func _physics_process(_delta: float) -> void:
 		# direction and the opposite of the current linear velocity
 		%RigidBody3D.apply_central_force(get_mid_vector(%RigidBody3D.linear_velocity  * -1, force_vector) * 15 * turning_factor)
 
-
+func dead_test() -> void:
+	$"..".queue_free()
