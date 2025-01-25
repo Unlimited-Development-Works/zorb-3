@@ -1,7 +1,7 @@
 extends Node
 var min_size = 10
 var timer_started = false
-var ring_thickness = 10
+var ring_thickness = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cg7rwfbhkgf3e"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://1ejc7iie8c82"]
 
 [sub_resource type="Shader" id="Shader_lkbyg"]
 code = "// Wind Waker style water - NekotoArts
@@ -208,7 +208,7 @@ shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
 shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 shader_parameter/distortion_speed = 2.0
-shader_parameter/tile = Vector2(150, 150)
+shader_parameter/tile = Vector2(1500, 1500)
 shader_parameter/height = 2.0
-shader_parameter/wave_size = Vector2(75, 75)
+shader_parameter/wave_size = Vector2(10, 10)
 shader_parameter/wave_speed = 0.5
