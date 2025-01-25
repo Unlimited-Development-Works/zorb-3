@@ -1,19 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=7 format=3 uid="uid://chfby6taf7iy8"]
 
-[ext_resource type="PackedScene" uid="uid://dcewyvm3lo1nu" path="res://Scenes/zorb.tscn" id="1_1jsm8"]
+[ext_resource type="Texture2D" uid="uid://cxbbegy0rpe5k" path="res://Graphics/blue-water.jpg" id="1_w1adn"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="PackedScene" uid="uid://tdtfd0ptngjn" path="res://Scenes/bobby.tscn" id="3_iietq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcj3v"]
 size = Vector3(60, 2, 60)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0dof"]
+albedo_texture = ExtResource("1_w1adn")
+
 [sub_resource type="BoxMesh" id="BoxMesh_d8ydw"]
+material = SubResource("StandardMaterial3D_v0dof")
 size = Vector3(60, 2, 60)
 
 [node name="World" type="Node3D"]
 
 [node name="Water" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47495, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719727, 0, 0)
@@ -26,9 +30,6 @@ mesh = SubResource("BoxMesh_d8ydw")
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -3, 5, 3)
 shadow_enabled = true
 
-[node name="Zorb" parent="." instance=ExtResource("1_1jsm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 5)
 
@@ -37,6 +38,3 @@ transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0,
 
 [node name="Bobby" parent="." instance=ExtResource("3_iietq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
-
-[node name="Bobby" parent="Bobby" instance=ExtResource("3_iietq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.371567, 2.77652, 0.0667861)
