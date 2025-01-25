@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://2wa0h4xywebf"]
+[gd_scene load_steps=10 format=3 uid="uid://2wa0h4xywebf"]
 
+[ext_resource type="Script" path="res://Scenes/arrow.gd" id="1_8gier"]
 [ext_resource type="ArrayMesh" uid="uid://dic1lik6uo6ch" path="res://Objects/zorb.obj" id="1_ig3sh"]
 [ext_resource type="Texture2D" uid="uid://dl2mu2w10fmc6" path="res://Graphics/brick.jpg" id="2_b26d5"]
 [ext_resource type="Script" path="res://Scripts/bobby.gd" id="2_bar0h"]
+[ext_resource type="Texture2D" uid="uid://ct4hlplowuso2" path="res://Graphics/tank_arrowEmpty.png" id="2_ea7je"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sucfo"]
 transparency = 1
@@ -17,6 +19,14 @@ radius = 0.845175
 albedo_texture = ExtResource("2_b26d5")
 
 [node name="Bobby" type="Node3D"]
+
+[node name="Arrow" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_8gier")
+
+[node name="Sprite3D" type="Sprite3D" parent="Arrow"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.9, 0, 0)
+texture = ExtResource("2_ea7je")
 
 [node name="SoftBody3D" type="SoftBody3D" parent="."]
 unique_name_in_owner = true
@@ -45,5 +55,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7w5kf")
 process_callback = 0
 one_shot = true
 
-[connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]
+[node name="JumpTimer" type="Timer" parent="RigidBody3D"]
+process_callback = 0
+one_shot = true
+
 [connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]
+[connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="RigidBody3D/JumpTimer" to="RigidBody3D" method="_on_jump_timer_timeout"]
