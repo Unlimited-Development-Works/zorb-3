@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=7 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="PackedScene" uid="uid://dcewyvm3lo1nu" path="res://Scenes/zorb.tscn" id="1_1jsm8"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="PackedScene" uid="uid://tdtfd0ptngjn" path="res://Scenes/bobby.tscn" id="3_iietq"]
+[ext_resource type="PackedScene" uid="uid://8qcs6ol7qvij" path="res://Scenes/ring.tscn" id="4_xed4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcj3v"]
 size = Vector3(60, 2, 60)
@@ -40,3 +41,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
 
 [node name="Bobby" parent="Bobby" instance=ExtResource("3_iietq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.371567, 2.77652, 0.0667861)
+
+[node name="Ring" parent="." instance=ExtResource("4_xed4k")]

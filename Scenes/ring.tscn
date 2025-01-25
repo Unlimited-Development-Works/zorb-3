@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://8qcs6ol7qvij"]
+
+[ext_resource type="Script" path="res://resize_torus.gd" id="1_ncdgy"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d2a7x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hski"]
+transparency = 1
+albedo_color = Color(0.662745, 0.188235, 0.105882, 0.784314)
+
+[node name="Ring" type="Node3D"]
+script = ExtResource("1_ncdgy")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("ConcavePolygonShape3D_d2a7x")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Area3D/CollisionShape3D"]
+use_collision = true
+inner_radius = 50.0
+outer_radius = 80.0
+sides = 64
+material = SubResource("StandardMaterial3D_0hski")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
