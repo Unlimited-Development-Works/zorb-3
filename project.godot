@@ -15,7 +15,20 @@ run/main_scene="res://Scenes/test.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1800
+window/size/viewport_height=1200
+
+[physics]
+
+3d/run_on_separate_thread=true
+3d/physics_engine="GodotPhysics3D"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/screen_space_aa=1
