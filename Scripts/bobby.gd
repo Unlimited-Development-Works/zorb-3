@@ -16,6 +16,10 @@ func get_mid_vector(v1, v2):
 
 func _ready():
 	device = DeviceManager.get_device()
+	if device == null:
+		print("WARNING: Bobby found no device, freeing")
+		queue_free()
+		return
 	print(device.color, %SoftBody3D.get_surface_override_material(0).albedo_color, %SoftBody3D.get_surface_override_material(0))
 	
 	var material = %SoftBody3D.get_surface_override_material(0).duplicate()
@@ -24,6 +28,8 @@ func _ready():
 	%Arrow.set_color(device.color)
 
 func _physics_process(_delta: float) -> void:
+	if device == null:
+		return
 	const FORCE_MAGNITUDE = 10 # used to adjust magnitude of force
 	var grounded = global_position.y < ground_y
 	var radius = %RigidBody3D/CollisionShape3D.shape.get_radius();

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="zorb-3"
-run/main_scene="res://Scenes/test.tscn"
+run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/GameManager.gd"
 
 [display]
 

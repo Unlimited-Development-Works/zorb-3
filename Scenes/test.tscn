@@ -3,10 +3,9 @@
 [ext_resource type="Material" uid="uid://br6ydo7wjs88m" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
-[ext_resource type="PackedScene" uid="uid://2wa0h4xywebf" path="res://Scenes/bobby.tscn" id="3_iietq"]
 [ext_resource type="PackedScene" uid="uid://cs8yssj5qpx6s" path="res://Scenes/ring.tscn" id="4_xed4k"]
 [ext_resource type="Script" path="res://Scripts/Water.gd" id="6_l3l5m"]
-[ext_resource type="PackedScene" uid="uid://byb4xhqjqscxc" path="res://Scenes/island.tscn" id="6_oueqa"]
+[ext_resource type="PackedScene" path="res://Scenes/island.tscn" id="6_oueqa"]
 [ext_resource type="Script" path="res://Scripts/PathFollow.gd" id="7_byp5d"]
 [ext_resource type="PackedScene" uid="uid://6i06mbuqa6dg" path="res://Scenes/ships/flagship.tscn" id="7_m8l6n"]
 [ext_resource type="AudioStream" uid="uid://bw3rnduserv5a" path="res://Audio/Wacky Waiting.ogg" id="7_re0rq"]
@@ -35,6 +34,14 @@ _data = {
 }
 point_count = 14
 
+[sub_resource type="LabelSettings" id="LabelSettings_efmgq"]
+font_size = 100
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0.215686, 0.215686, 0.215686, 0.741176)
+shadow_offset = Vector2(8, 8)
+
 [node name="World" type="Node3D"]
 
 [node name="Water" type="StaticBody3D" parent="."]
@@ -61,12 +68,6 @@ camera_start_rotation = 15.0
 
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
 transform = Transform3D(1.93185, 0.5, 0.133974, -0.517638, 1.86603, 0.5, 0, -0.517638, 1.93185, 3.2692, 2.56261, -4.45823)
-
-[node name="Bobby" parent="." instance=ExtResource("3_iietq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
-
-[node name="Bobby2" parent="." instance=ExtResource("3_iietq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6387, 0.189334, -7.65148)
 
 [node name="Ring" parent="." instance=ExtResource("4_xed4k")]
 
@@ -106,6 +107,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1345, -1.42062, -29.145)
 
 [node name="Buoy3" parent="." instance=ExtResource("11_lux3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6409, -0.973907, 19.0892)
+
+[node name="GameOverUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="GameOverUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverUI/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_efmgq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinLabel" type="Label" parent="GameOverUI/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_efmgq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_re0rq")

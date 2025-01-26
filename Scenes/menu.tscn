@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://ebpaokbudu2e"]
+
+[ext_resource type="Texture2D" uid="uid://b1t45c5kk6845" path="res://Graphics/atlas_joypad1.tres" id="1_8103b"]
+[ext_resource type="LabelSettings" uid="uid://rctyn7i0ilog" path="res://Graphics/menu_plain_label_settings.tres" id="1_e2l2y"]
+[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_ebtv4"]
+[ext_resource type="Texture2D" uid="uid://1iag8yuufxxg" path="res://Graphics/atlas_joypad2.tres" id="2_6om3c"]
+[ext_resource type="Texture2D" uid="uid://bngyrljhmfl4u" path="res://Graphics/atlas_joypad3.tres" id="3_ub180"]
+[ext_resource type="Texture2D" uid="uid://dq8m5en2hgmfm" path="res://Graphics/atlas_joypad4.tres" id="4_7bg5x"]
+[ext_resource type="Texture2D" uid="uid://c4g66oqsel0tv" path="res://Graphics/atlas_joypadA.tres" id="6_n4cdt"]
+[ext_resource type="Texture2D" uid="uid://d1ya0jmldtx5k" path="res://Graphics/atlas_joypad_start.tres" id="8_u7dgf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vty6"]
+font_size = 100
+outline_size = 32
+outline_color = Color(0.0975378, 0.0975378, 0.0975378, 1)
+shadow_size = 16
+shadow_offset = Vector2(8, 8)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ebtv4")
+
+[node name="MenuList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.5
+offset_top = -68.5
+offset_right = 644.5
+offset_bottom = 172.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="MenuList"]
+layout_mode = 2
+text = "Zorb 3: It's zorbin time"
+label_settings = SubResource("LabelSettings_1vty6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoypadList" type="HFlowContainer" parent="MenuList"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+alignment = 1
+
+[node name="Joypad0" type="TextureRect" parent="MenuList/JoypadList"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("1_8103b")
+
+[node name="Joypad1" type="TextureRect" parent="MenuList/JoypadList"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_6om3c")
+
+[node name="Joypad2" type="TextureRect" parent="MenuList/JoypadList"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("3_ub180")
+
+[node name="Joypad3" type="TextureRect" parent="MenuList/JoypadList"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_7bg5x")
+
+[node name="JoinPrompt" type="HFlowContainer" parent="MenuList"]
+layout_mode = 2
+alignment = 1
+
+[node name="Press" type="Label" parent="MenuList/JoinPrompt"]
+layout_mode = 2
+text = "Press"
+label_settings = ExtResource("1_e2l2y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoypadA" type="TextureRect" parent="MenuList/JoinPrompt"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("6_n4cdt")
+
+[node name="to join" type="Label" parent="MenuList/JoinPrompt"]
+layout_mode = 2
+text = "to join"
+label_settings = ExtResource("1_e2l2y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartPrompt" type="HFlowContainer" parent="MenuList"]
+layout_mode = 2
+alignment = 1
+
+[node name="Press" type="Label" parent="MenuList/StartPrompt"]
+layout_mode = 2
+text = "Press"
+label_settings = ExtResource("1_e2l2y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoypadA" type="TextureRect" parent="MenuList/StartPrompt"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("8_u7dgf")
+
+[node name="to start" type="Label" parent="MenuList/StartPrompt"]
+layout_mode = 2
+text = "to start
+"
+label_settings = ExtResource("1_e2l2y")
+horizontal_alignment = 1
+vertical_alignment = 1
