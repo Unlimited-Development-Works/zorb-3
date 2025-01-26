@@ -79,6 +79,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 texture = ExtResource("4_7bg5x")
 
+[node name="Joypad4" type="TextureRect" parent="MenuList/JoypadList"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_7bg5x")
+
 [node name="JoinPrompt" type="HFlowContainer" parent="MenuList"]
 layout_mode = 2
 alignment = 1

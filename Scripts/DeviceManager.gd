@@ -8,6 +8,7 @@ static var device_colors = {
 	1: COLOR_GREY,
 	2: COLOR_GREY,
 	3: COLOR_GREY,
+	4: COLOR_GREY,
 }
 
 static var active_devices = []
