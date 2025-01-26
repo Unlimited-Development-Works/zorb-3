@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://3v5wn44rmys1"]
+
+[ext_resource type="Script" path="res://Scripts/PathFollow.gd" id="1_0frcd"]
+[ext_resource type="ArrayMesh" uid="uid://bqfsb6mr1qifn" path="res://Objects/ships/boat_022.obj" id="2_3dg8o"]
+[ext_resource type="Script" path="res://Scripts/animation_player.gd" id="3_0yj4d"]
+
+[sub_resource type="Curve3D" id="Curve3D_1e0qu"]
+_data = {
+"points": PackedVector3Array(-7.08553, -1.43051e-06, 1.08299, 7.08553, 1.43051e-06, -1.08299, 4.99756, -0.00012207, -23.9673, -1.97612, 1.43051e-06, -2.32953, 1.97612, -1.43051e-06, 2.32953, 18.9799, -0.00012207, -19.2658, -2.64433, 1.43051e-06, -1.59524, 2.64433, -1.43051e-06, 1.59524, 34.6719, 0, -13.0379, 3.16772, -1.43051e-06, -2.27205, -3.16772, 1.43051e-06, 2.27205, 35.0382, 0, -3.0854, 3.89525, -1.43051e-06, -0.440046, -3.89525, 1.43051e-06, 0.440046, 20.3232, 0, -2.3527, 2.88531, -1.43051e-06, -2.77919, -2.88531, 1.43051e-06, 2.77919, 11.0423, 0, 1.79926, 7.24207, 1.43051e-06, -3.2046, -7.24207, -1.43051e-06, 3.2046, 2.79946, 0, 7.41661, 6.65905, -1.43051e-06, 2.62032, -6.65905, 1.43051e-06, -2.62032, -9.47325, 0, 6.25651, -2.44603, 1.43051e-06, 6.41622, 2.44603, -1.43051e-06, -6.41622, -13.6863, 0, -3.14646, -1.45811, 1.43051e-06, 2.55807, 1.45811, -1.43051e-06, -2.55807, -4.83282, 0, -11.3283, -2.3033, 0, 2.56503, 2.3033, 0, -2.56503, -0.585042, -0.00012064, -18.4545, 0, 0, 0, 0, 0, 0, 4.99756, -0.00012207, -23.9673),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bigg2"]
+points = PackedVector3Array(-0.000253439, 0, -1.56853, 0.32371, 0, -1.48169, -0.323963, 0, -1.48169, -0.000253439, 0.434997, -2.30003, 0.539685, 0.434997, -2.15494, 0.591651, 0, -1.25526, -0.539939, 0.434997, -2.15494, -0.592158, 0, -1.25526, -0.708511, 1.01521, -2.61714, -0.000253439, 1.01521, -2.8073, 0.708258, 1.01521, -2.61714, 1.29459, 1.01521, -2.12196, 0.986339, 0.434997, -1.77737, 0.591651, 0, 2.8073, -1.29484, 1.01521, -2.12196, -0.986592, 0.434997, -1.77737, -0.592158, 0, 2.8073, -0.674797, 1.45053, -2.52481, -0.000253439, 1.45053, -2.70617, -1.23324, 1.45053, -2.05326, 0.674543, 1.45053, -2.52481, 1.23299, 1.45053, -2.05326, 1.29459, 1.01521, 2.8073, 0.986339, 0.434997, 2.8073, -1.29484, 1.01521, 2.8073, -0.986592, 0.434997, 2.8073, -0.943245, 2.51991, -1.5383, -0.825371, 2.61063, -1.5383, -0.113057, 3.33378, -1.09038, -0.000253439, 3.33378, -1.10522, 0.112551, 3.33378, -1.09038, 0.824864, 2.61063, -1.5383, -1.23324, 1.45053, 2.8073, 0.942738, 2.51991, -1.5383, 1.23299, 1.45053, 2.8073, -0.436007, 3.33378, -0.669399, -0.421051, 3.33378, -0.782614, -0.377704, 3.33378, -0.887585, -0.943245, 2.51991, 1.93675, -0.308247, 3.33378, -0.977718, -0.218003, 3.33378, -1.04697, 0.21775, 3.33378, -1.04697, 0.307993, 3.33378, -0.977718, 0.377197, 3.33378, -0.887585, -0.000253439, 3.33378, 1.50367, -0.113057, 3.33378, 1.48884, -0.825371, 2.61063, 1.93675, 0.420797, 3.33378, -0.782614, 0.435753, 3.33378, -0.669399, 0.942738, 2.51991, 1.93675, 0.824864, 2.61063, 1.93675, 0.112551, 3.33378, 1.48884, -0.436007, 3.33378, 1.06785, -0.377704, 3.33378, 1.28604, -0.421051, 3.33378, 1.18052, -0.218003, 3.33378, 1.44542, -0.308247, 3.33378, 1.37617, 0.435753, 3.33378, 1.06785, 0.420797, 3.33378, 1.18052, 0.377197, 3.33378, 1.28604, 0.307993, 3.33378, 1.37617, 0.21775, 3.33378, 1.44542)
+
+[sub_resource type="Animation" id="Animation_6t8kg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.22087, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_48etj"]
+resource_name = "bob"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.53333, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2.22087, -0.25, 0, 0.25, 0, -1.90839, -0.25, 0, 0.25, 0, -2.22087, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.53333, 3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.53333, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tkvg"]
+_data = {
+"RESET": SubResource("Animation_6t8kg"),
+"bob": SubResource("Animation_48etj")
+}
+
+[node name="Tug" type="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22087, 0)
+curve = SubResource("Curve3D_1e0qu")
+script = ExtResource("1_0frcd")
+speed = 4.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.151089, -1.97283e-07, -0.988511, 0, 1, -1.99572e-07, 0.988511, 3.01538e-08, 0.151089, 4.99756, -0.00012207, -23.9673)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
+mesh = ExtResource("2_3dg8o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PathFollow3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/StaticBody3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_bigg2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3tkvg")
+}
+script = ExtResource("3_0yj4d")
+animation = "bob"
