@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cg7rwfbhkgf3e"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://br6ydo7wjs88m"]
 
 [sub_resource type="Shader" id="Shader_lkbyg"]
 code = "// Wind Waker style water - NekotoArts
