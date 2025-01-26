@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://midgo0vsyyrj"]
+
+[ext_resource type="Texture2D" uid="uid://d3xunwxre30pq" path="res://Graphics/sheet_white2x.png" id="1_hanva"]
+
+[resource]
+atlas = ExtResource("1_hanva")
+region = Rect2(500, 1900, 100, 100)

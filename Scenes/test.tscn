@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=22 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Material" uid="uid://br6ydo7wjs88m" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://3v5wn44rmys1" path="res://Scenes/ships/tug.tscn" id="9_2vk1n"]
 [ext_resource type="PackedScene" uid="uid://bbpx85t63m88g" path="res://Scenes/ships/cargo.tscn" id="9_gk3ae"]
 [ext_resource type="PackedScene" uid="uid://cxga0ew8yncwb" path="res://Scenes/buoy.tscn" id="11_lux3v"]
+[ext_resource type="LabelSettings" uid="uid://casoiax6g8jyx" path="res://Graphics/menu_title_label_settings.tres" id="12_kooog"]
+[ext_resource type="Texture2D" uid="uid://d1ya0jmldtx5k" path="res://Graphics/atlas_joypad_start.tres" id="13_5goi8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -34,8 +36,16 @@ _data = {
 }
 point_count = 14
 
-[sub_resource type="LabelSettings" id="LabelSettings_efmgq"]
+[sub_resource type="LabelSettings" id="LabelSettings_8d8lm"]
 font_size = 100
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0.215686, 0.215686, 0.215686, 0.741176)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkmoy"]
+font_size = 80
 outline_size = 32
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 16
@@ -109,6 +119,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1345, -1.42062, -29.145)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6409, -0.973907, 19.0892)
 
 [node name="GameOverUI" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,10 +144,9 @@ grow_vertical = 2
 
 [node name="GameOverLabel" type="Label" parent="GameOverUI/HBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Game Over"
-label_settings = SubResource("LabelSettings_efmgq")
+label_settings = ExtResource("12_kooog")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -144,7 +155,25 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Game Over"
-label_settings = SubResource("LabelSettings_efmgq")
+label_settings = SubResource("LabelSettings_8d8lm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResetPrompt2" type="HFlowContainer" parent="GameOverUI/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="JoypadStart" type="TextureRect" parent="GameOverUI/HBoxContainer/ResetPrompt2"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("13_5goi8")
+
+[node name="to go to menu" type="Label" parent="GameOverUI/HBoxContainer/ResetPrompt2"]
+layout_mode = 2
+text = " to reset"
+label_settings = SubResource("LabelSettings_lkmoy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
