@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 		var players_left = players.filter(func (node): return is_instance_valid(node))
 		if len(players_left) == 1:
 			win_label.show()
-			win_label.text = "Player %d wins!" % players_left[0].get_player_device()
+			win_label.text = "Player %d wins!" % (players_left[0].get_player_device() + 1)
 		if len(players_left) < 2:
 			game_over_label.show()
 			game_over = true
