@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://byb4xhqjqscxc"]
+
+[ext_resource type="ArrayMesh" uid="uid://h1u5m8d2y1om" path="res://Objects/rockFlatGrass.obj" id="1_wa0au"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_giwjb"]
+points = PackedVector3Array(2.83136, 0, -0.869917, 2.83136, 0, -1.68967, 2.63918, 0.33, -0.98043, 2.32116, 0.66, 0.823451, 2.70324, 0, 0.78638, 2.63918, 0.33, -1.57916, 1.70551, 0, -3.15012, 1.54622, 0.66, 2.53221, 1.94134, 0.33, 2.64762, 2.0859, 0.66, -1.2686, 2.06209, 0, 2.71686, 1.51334, 0.33, -3.03961, 1.14769, 0.66, -2.89343, 0.995198, 0, -3.56, 0.995198, 0.33, -3.33897, -0.320556, 0.66, 2.71476, -0.613639, 0.33, 3.25334, -0.613639, 0, 3.58488, 1.61481, 0.33, 2.83577, 1.61481, 0, 2.97566, -0.727584, 0.66, -2.89343, -0.91976, 0, -3.22636, -1.39141, 0.33, 2.80429, -1.41239, 0.66, 1.18996, -1.67883, 0, 2.97006, -1.89538, 0, -2.90881, -1.89538, 0.33, -2.57657, -2.67259, 0.33, -2.12753, -1.66579, 0.66, -1.2686, -1.98551, 0.33, 1.28928, -2.67259, 0.33, -1.23013, -2.96, 0, -1.06366, -2.96, 0, -2.294)
+
+[node name="Island" type="StaticBody3D"]
+
+[node name="RockFlatGrass" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("1_wa0au")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_giwjb")

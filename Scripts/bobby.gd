@@ -1,11 +1,14 @@
 extends RigidBody3D
-
 class_name Bobby
+
+@export_range(1, 30) var jump_strength: float = 20
+@export var ground_y: float = 0
 
 var splash_emitter = preload("res://Scenes/splash_emitter.tscn")
 
 var device
 var can_boost: bool = true
+var can_jump: bool = true
 var previous_linear_velocity
 
 func get_mid_vector(v1, v2):
@@ -18,45 +21,58 @@ func _ready():
 	var material = %SoftBody3D.get_surface_override_material(0).duplicate()
 	material.albedo_color = device.color
 	%SoftBody3D.set_surface_override_material(0, material)
+	%Arrow.set_color(device.color)
 
 func _physics_process(_delta: float) -> void:
 	const FORCE_MAGNITUDE = 10 # used to adjust magnitude of force
+	var grounded = global_position.y < ground_y
 	var radius = %RigidBody3D/CollisionShape3D.shape.get_radius();
 	var direction = Input.get_vector(device.inputs.LEFT, device.inputs.RIGHT, device.inputs.UP, device.inputs.DOWN).limit_length(1)
 	var force_vector = Vector3(direction.x, 0, direction.y) * FORCE_MAGNITUDE
 	var force_position = Vector3(0, radius, 0)
 	%RigidBody3D.linear_damp = 0;
-	if (can_boost and Input.is_action_just_pressed(device.inputs.BOOST)):
+	if grounded and can_boost and Input.is_action_just_pressed(device.inputs.BOOST):
 		can_boost = false
 		$BoostTimer.start()
 		%RigidBody3D.apply_central_impulse(Vector3(direction.x, 0, direction.y) * 40)
+	if grounded and can_jump and Input.is_action_just_pressed(device.inputs.JUMP):
+		can_jump = false
+		$JumpTimer.start()
+		%RigidBody3D.apply_central_impulse(Vector3.UP * jump_strength)
 	if (Input.is_action_pressed(device.inputs.LEFT)
 		or Input.is_action_pressed(device.inputs.RIGHT)
 		or Input.is_action_pressed(device.inputs.UP)
 		or Input.is_action_pressed(device.inputs.DOWN)):
 
-		# Split force applied between "spinning" top force and central	
-		%RigidBody3D.apply_force(force_vector * 0.8, force_position)
-		%RigidBody3D.apply_central_force(force_vector * 0.2)
+		%Arrow.activate(direction.normalized(), direction.length())
 
-		# Calculate turning factor from angle between force applied and current linear velocity
-		var turning_factor = %RigidBody3D.linear_velocity.angle_to(force_vector) / PI;
+		if grounded:
+			# Split force applied between "spinning" top force and central	
+			%RigidBody3D.apply_force(force_vector * 0.8, force_position)
+			%RigidBody3D.apply_central_force(force_vector * 0.2)
 
-		# Add some minor linear damping while turning
-		const DAMPING_VALUE = 0.5;
-		%RigidBody3D.linear_damp = DAMPING_VALUE * turning_factor; 
+			# Calculate turning factor from angle between force applied and current linear velocity
+			var turning_factor = %RigidBody3D.linear_velocity.angle_to(force_vector) / PI;
 
-		# Add counteracting force in the direction of the midpoint between the applied force
-		# direction and the opposite of the current linear velocity
-		%RigidBody3D.apply_central_force(get_mid_vector(%RigidBody3D.linear_velocity  * -1, force_vector) * 15 * turning_factor)
+			# Add some minor linear damping while turning
+			const DAMPING_VALUE = 0.5;
+			%RigidBody3D.linear_damp = DAMPING_VALUE * turning_factor; 
+
+			# Add counteracting force in the direction of the midpoint between the applied force
+			# direction and the opposite of the current linear velocity
+			%RigidBody3D.apply_central_force(get_mid_vector(%RigidBody3D.linear_velocity  * -1, force_vector) * 15 * turning_factor)
+	else:
+		%Arrow.deactivate()
 	self.previous_linear_velocity = %RigidBody3D.linear_velocity
-
+	
 func dead_test() -> void:
 	$"..".queue_free()
 
-
 func _on_boost_timer_timeout() -> void:
 	can_boost = true
+	
+func _on_jump_timer_timeout() -> void:
+	can_jump = true
 
 func _on_body_entered(body):
 	if body is not Bobby:
@@ -88,8 +104,8 @@ func _on_body_entered(body):
 	# You've lost and you're getting knocked back
 
 	# Todo apply force at point of collison rather than centrally
-	const KNOCKBACK_MULTIPLIER = 3
-	%RigidBody3D.apply_central_impulse((body_to_self * body_lv.length() * KNOCKBACK_MULTIPLIER).clamp(Vector3(-40, 0, -40), Vector3(40 ,0, 40)))
+	const KNOCKBACK_MULTIPLIER = 6
+	%RigidBody3D.apply_central_impulse(body_to_self * clamp(body_lv.length() * KNOCKBACK_MULTIPLIER, 0, 40))
 
 func splash():
 	var bobby = self.get_parent()

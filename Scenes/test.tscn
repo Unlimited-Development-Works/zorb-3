@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=12 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Material" uid="uid://br6ydo7wjs88m" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
 [ext_resource type="PackedScene" uid="uid://2wa0h4xywebf" path="res://Scenes/bobby.tscn" id="3_iietq"]
-[ext_resource type="PackedScene" path="res://Scenes/ring.tscn" id="4_xed4k"]
+[ext_resource type="PackedScene" uid="uid://cs8yssj5qpx6s" path="res://Scenes/ring.tscn" id="4_xed4k"]
 [ext_resource type="Script" path="res://Scripts/Water.gd" id="6_l3l5m"]
+[ext_resource type="PackedScene" uid="uid://byb4xhqjqscxc" path="res://Scenes/island.tscn" id="6_oueqa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -45,7 +46,7 @@ camera_start = Vector3(0, 28, 12)
 camera_end = Vector3(0, 20, 1)
 
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
-transform = Transform3D(0.965926, 0.25, 0.0669873, -0.258819, 0.933013, 0.25, 0, -0.258819, 0.965926, 3.2692, 2.56261, -4.45823)
+transform = Transform3D(1.93185, 0.5, 0.133974, -0.517638, 1.86603, 0.5, 0, -0.517638, 1.93185, 3.2692, 2.56261, -4.45823)
 
 [node name="Bobby" parent="." instance=ExtResource("3_iietq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
@@ -62,5 +63,8 @@ script = ExtResource("6_l3l5m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_01jdx")
+
+[node name="Island" parent="." instance=ExtResource("6_oueqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81366, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
