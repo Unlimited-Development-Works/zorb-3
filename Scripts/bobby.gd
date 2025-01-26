@@ -33,10 +33,12 @@ func _physics_process(_delta: float) -> void:
 		can_boost = false
 		$BoostTimer.start()
 		%RigidBody3D.apply_central_impulse(Vector3(direction.x, 0, direction.y) * 40)
+		%BoostSound.play()
 	if grounded and can_jump and Input.is_action_just_pressed(device.inputs.JUMP):
 		can_jump = false
 		$JumpTimer.start()
 		%RigidBody3D.apply_central_impulse(Vector3.UP * jump_strength)
+		%JumpSound.play()
 	if (Input.is_action_pressed(device.inputs.LEFT)
 		or Input.is_action_pressed(device.inputs.RIGHT)
 		or Input.is_action_pressed(device.inputs.UP)
@@ -104,3 +106,4 @@ func _on_body_entered(body):
 	# Todo apply force at point of collison rather than centrally
 	const KNOCKBACK_MULTIPLIER = 6
 	%RigidBody3D.apply_central_impulse(body_to_self * clamp(body_lv.length() * KNOCKBACK_MULTIPLIER, 0, 40))
+	%ImpactSound.play()

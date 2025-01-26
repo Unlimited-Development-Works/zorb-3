@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2wa0h4xywebf"]
+[gd_scene load_steps=13 format=3 uid="uid://2wa0h4xywebf"]
 
 [ext_resource type="Script" path="res://Scenes/arrow.gd" id="1_8gier"]
 [ext_resource type="ArrayMesh" uid="uid://dic1lik6uo6ch" path="res://Objects/zorb.obj" id="1_ig3sh"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/bobby.gd" id="2_bar0h"]
 [ext_resource type="Texture2D" uid="uid://ct4hlplowuso2" path="res://Graphics/tank_arrowEmpty.png" id="2_ea7je"]
 [ext_resource type="ArrayMesh" uid="uid://q445yh1sgirv" path="res://Objects/pirate_officer.obj" id="5_ux7ys"]
+[ext_resource type="AudioStream" uid="uid://cpinh8ypybjsd" path="res://Audio/impactSoft_medium_001.ogg" id="7_8fa6q"]
+[ext_resource type="AudioStream" uid="uid://cdtbofvq1jgtq" path="res://Audio/impactSoft_heavy_002.ogg" id="7_vh6cq"]
+[ext_resource type="AudioStream" uid="uid://cilguqrywmoe5" path="res://Audio/hit4.ogg" id="7_xksdf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sucfo"]
 transparency = 1
@@ -59,6 +62,18 @@ one_shot = true
 [node name="JumpTimer" type="Timer" parent="RigidBody3D"]
 process_callback = 0
 one_shot = true
+
+[node name="BoostSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_xksdf")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_8fa6q")
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_vh6cq")
 
 [connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]
 [connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]
