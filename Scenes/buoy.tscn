@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxga0ew8yncwb"]
+
+[ext_resource type="ArrayMesh" uid="uid://dw7xi056cmuam" path="res://Objects/ships/buoy.obj" id="1_373a6"]
+[ext_resource type="Script" path="res://Scripts/animation_player.gd" id="2_djahr"]
+
+[sub_resource type="Animation" id="Animation_yf4co"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_dijku"]
+resource_name = "buoy"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 2.5, 1, 0, -0.409652, 0, 5, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_433bm"]
+_data = {
+"RESET": SubResource("Animation_yf4co"),
+"buoy": SubResource("Animation_dijku")
+}
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ds4kt"]
+points = PackedVector3Array(-0.4641, 0.0998226, -9.08375e-05, -0.328177, 0.0998226, 0.328086, -0.4641, 0.414092, -9.08375e-05, -0.328177, 0.0998226, -0.328177, -0.229779, 0, -0.229779, -0.324906, 0, -9.08375e-05, -0.229779, 0, 0.229688, -9.08375e-05, 0.0998226, 0.464009, -0.328177, 0.414092, 0.328086, -0.196979, 1.8441, 0.196888, -0.196979, 1.8441, -0.196979, -0.328177, 0.414092, -0.328177, -9.08375e-05, 0.0998226, -0.4641, -9.08375e-05, 0, -0.324906, -9.08375e-05, 0, 0.324816, 0.229688, 0, 0.229688, 0.328086, 0.0998226, 0.328086, -9.08375e-05, 0.414092, 0.464009, 0.196888, 1.8441, 0.196888, 0.196888, 1.8441, -0.196979, -9.08375e-05, 0.414092, -0.4641, 0.328086, 0.0998226, -0.328177, 0.229688, 0, -0.229779, 0.324816, 0, -9.08375e-05, 0.464009, 0.0998226, -9.08375e-05, 0.328086, 0.414092, 0.328086, 0.464009, 0.414092, -9.08375e-05, 0.328086, 0.414092, -0.328177)
+
+[node name="Buoy" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_433bm")
+}
+playback_auto_capture = false
+script = ExtResource("2_djahr")
+animation = "buoy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_373a6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ds4kt")
