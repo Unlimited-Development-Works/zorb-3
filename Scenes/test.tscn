@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=23 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Material" uid="uid://br6ydo7wjs88m" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
@@ -35,6 +35,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_hlicb"]
+font_size = 100
+outline_size = 32
+outline_color = Color(0.0975378, 0.0975378, 0.0975378, 1)
+shadow_size = 16
+shadow_offset = Vector2(8, 8)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8d8lm"]
 font_size = 100
@@ -141,6 +148,13 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="GameOverUI/HBoxContainer"]
+layout_mode = 2
+text = "Zorb 3: It's zorbin time"
+label_settings = SubResource("LabelSettings_hlicb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameOverLabel" type="Label" parent="GameOverUI/HBoxContainer"]
 unique_name_in_owner = true
