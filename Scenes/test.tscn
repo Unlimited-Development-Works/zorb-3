@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
 [ext_resource type="PackedScene" uid="uid://cs8yssj5qpx6s" path="res://Scenes/ring.tscn" id="4_xed4k"]
 [ext_resource type="Script" path="res://Scripts/Water.gd" id="6_l3l5m"]
-[ext_resource type="PackedScene" uid="uid://byb4xhqjqscxc" path="res://Scenes/island.tscn" id="6_oueqa"]
+[ext_resource type="PackedScene" path="res://Scenes/island.tscn" id="6_oueqa"]
 [ext_resource type="Script" path="res://Scripts/PathFollow.gd" id="7_byp5d"]
 [ext_resource type="PackedScene" uid="uid://6i06mbuqa6dg" path="res://Scenes/ships/flagship.tscn" id="7_m8l6n"]
 [ext_resource type="ArrayMesh" uid="uid://chb0wt5uuv2xl" path="res://Objects/ships/boat_001.obj" id="9_0vroe"]
@@ -19,14 +19,6 @@ friction = 0.75
 lightmap_size_hint = Vector2i(6004, 3026)
 material = ExtResource("1_1wc3b")
 size = Vector3(600, 2, 600)
-
-[sub_resource type="LabelSettings" id="LabelSettings_efmgq"]
-font_size = 100
-outline_size = 32
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 16
-shadow_color = Color(0.215686, 0.215686, 0.215686, 0.741176)
-shadow_offset = Vector2(8, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcj3v"]
 size = Vector3(300, 1, 300)
@@ -43,6 +35,14 @@ point_count = 14
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ti7fb"]
 points = PackedVector3Array(1.33875, 0.699933, 2.0715, 1.01979, 0.299938, 2.0715, 1.33875, 0.699933, -2.00503, 1.2748, 0.999871, 2.0715, 0.562443, 0.492302, 2.49698, 0.562443, 0.38238, 2.49698, 0.611715, 0, 2.0715, 1.01979, 0.299938, -1.72004, 0.397327, 0.217496, 2.49698, 0.557987, 0.299938, -2.03222, 0.732276, 0.699933, -2.4149, 0.697418, 0.999871, -2.33836, 1.2748, 0.999871, -1.94813, 0.97497, 1.89945, 1.35196, -0.000262141, 2.3995, 1.35196, 0.467304, 0.999871, 2.32175, 0.567422, 0.799991, 2.42195, 0.399161, 0.470224, 2.5715, 0.405714, 0.454252, 2.5715, 0.408072, 0.437341, 2.5715, 0.405714, 0.42043, 2.5715, 0.399161, 0.404458, 2.5715, 0.388678, 0.39107, 2.5715, -0.61224, 0, 2.0715, 0.611715, 0, -1.28852, 0.375311, 0.380501, 2.5715, 0.359324, 0.373924, 2.5715, 0.342288, 0.37181, 2.5715, -0.397589, 0.217496, 2.49698, -0.000262141, 0.299938, -2.15256, 0.334687, 0, -1.47532, -0.000262141, 0.699933, -2.572, -0.000262141, 0.999871, -2.48842, -0.000262141, 2.3995, -1.52215, 0.97497, 1.89945, -1.52215, -0.975233, 1.89945, 1.35196, -1.27506, 0.999871, 2.0715, -0.467567, 0.999871, 2.32175, 0.397327, 0.657421, 2.49698, 0.342288, 0.503106, 2.5715, 0.359324, 0.500758, 2.5715, 0.375311, 0.494181, 2.5715, 0.388678, 0.483847, 2.5715, -1.02005, 0.299938, 2.0715, -0.61224, 0, -1.28852, -0.34255, 0.37181, 2.5715, -0.359586, 0.373924, 2.5715, -0.375573, 0.380501, 2.5715, -0.38894, 0.39107, 2.5715, -0.562705, 0.38238, 2.49698, -0.732538, 0.699933, -2.4149, -0.000262141, 0, -1.54733, -0.33495, 0, -1.47532, -0.558249, 0.299938, -2.03222, -0.697681, 0.999871, -2.33836, -0.975233, 1.89945, -1.52215, -1.33875, 0.699933, 2.0715, -0.562705, 0.492302, 2.49698, -0.567685, 0.799991, 2.42195, -1.27506, 0.999871, -1.94813, -0.397589, 0.657421, 2.49698, -0.34255, 0.503106, 2.5715, -1.02005, 0.299938, -1.72004, -0.399423, 0.404458, 2.5715, -0.405976, 0.42043, 2.5715, -0.408334, 0.437341, 2.5715, -1.33875, 0.699933, -2.00503, -0.405976, 0.454252, 2.5715, -0.399423, 0.470224, 2.5715, -0.38894, 0.483847, 2.5715, -0.375573, 0.494181, 2.5715, -0.359586, 0.500758, 2.5715)
+
+[sub_resource type="LabelSettings" id="LabelSettings_efmgq"]
+font_size = 100
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0.215686, 0.215686, 0.215686, 0.741176)
+shadow_offset = Vector2(8, 8)
 
 [node name="World" type="Node3D"]
 
@@ -84,25 +84,6 @@ shape = SubResource("BoxShape3D_01jdx")
 [node name="Island" parent="." instance=ExtResource("6_oueqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81366, 0)
 
-[node name="GameOverLabel" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -11.5
-offset_right = 43.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Game Over"
-label_settings = SubResource("LabelSettings_efmgq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Ships" type="Node3D" parent="."]
 
 [node name="LittleBoat" type="Path3D" parent="Ships"]
@@ -135,5 +116,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1345, -1.42062, -29.145)
 
 [node name="Buoy3" parent="." instance=ExtResource("11_lux3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6409, -0.973907, 19.0892)
+
+[node name="GameOverUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="GameOverUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverUI/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_efmgq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinLabel" type="Label" parent="GameOverUI/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_efmgq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

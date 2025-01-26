@@ -22,6 +22,8 @@ func take_available_color():
 	return DeviceManager.COLOR_GREY
 
 func _ready() -> void:
+	for device in Input.get_connected_joypads():
+		get_joypad_icon(device).visible = true
 	Input.connect("joy_connection_changed", _on_joy_connection_changed)
 
 func get_joypad_icon(device: int) -> TextureRect:

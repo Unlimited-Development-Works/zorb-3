@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://2wa0h4xywebf"]
+[gd_scene load_steps=11 format=3 uid="uid://2wa0h4xywebf"]
 
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_8gier"]
 [ext_resource type="ArrayMesh" uid="uid://dic1lik6uo6ch" path="res://Objects/zorb.obj" id="1_ig3sh"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_yxfjk"]
 [ext_resource type="Texture2D" uid="uid://dl2mu2w10fmc6" path="res://Graphics/brick.jpg" id="2_b26d5"]
 [ext_resource type="Script" path="res://Scripts/bobby.gd" id="2_bar0h"]
 [ext_resource type="Texture2D" uid="uid://ct4hlplowuso2" path="res://Graphics/tank_arrowEmpty.png" id="2_ea7je"]
@@ -18,6 +19,7 @@ radius = 0.845175
 albedo_texture = ExtResource("2_b26d5")
 
 [node name="Bobby" type="Node3D"]
+script = ExtResource("1_yxfjk")
 
 [node name="Arrow" type="Node3D" parent="."]
 unique_name_in_owner = true
