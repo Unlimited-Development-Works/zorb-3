@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbpx85t63m88g"]
+
+[ext_resource type="ArrayMesh" uid="uid://1rthai16h0hu" path="res://Objects/ships/boat_004.obj" id="1_lcvwk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_awm0m"]
+size = Vector3(3.83923, 1.24365, 9.99292)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ltsyg"]
+size = Vector3(2.41357, 2.62817, 2.03174)
+
+[node name="Cargo" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_lcvwk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494995, 0.7026, 0.29187)
+shape = SubResource("BoxShape3D_awm0m")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0759277, 2.08669, -2.72517)
+shape = SubResource("BoxShape3D_ltsyg")

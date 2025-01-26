@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://byb4xhqjqscxc" path="res://Scenes/island.tscn" id="6_oueqa"]
 [ext_resource type="Script" path="res://Scripts/PathFollow.gd" id="7_byp5d"]
 [ext_resource type="PackedScene" uid="uid://6i06mbuqa6dg" path="res://Scenes/ships/flagship.tscn" id="7_m8l6n"]
-[ext_resource type="ArrayMesh" uid="uid://chb0wt5uuv2xl" path="res://Objects/ships/boat_001.obj" id="9_0vroe"]
-[ext_resource type="PackedScene" uid="uid://3v5wn44rmys1" path="res://Scenes/ships/tug.tscn" id="9_2vk1n"]
-[ext_resource type="PackedScene" uid="uid://cxga0ew8yncwb" path="res://Scenes/buoy.tscn" id="11_lux3v"]
 [ext_resource type="AudioStream" uid="uid://bw3rnduserv5a" path="res://Audio/Wacky Waiting.ogg" id="7_re0rq"]
+[ext_resource type="PackedScene" uid="uid://3v5wn44rmys1" path="res://Scenes/ships/tug.tscn" id="9_2vk1n"]
+[ext_resource type="PackedScene" uid="uid://bbpx85t63m88g" path="res://Scenes/ships/cargo.tscn" id="9_gk3ae"]
+[ext_resource type="PackedScene" uid="uid://cxga0ew8yncwb" path="res://Scenes/buoy.tscn" id="11_lux3v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -34,9 +34,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 14
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ti7fb"]
-points = PackedVector3Array(1.33875, 0.699933, 2.0715, 1.01979, 0.299938, 2.0715, 1.33875, 0.699933, -2.00503, 1.2748, 0.999871, 2.0715, 0.562443, 0.492302, 2.49698, 0.562443, 0.38238, 2.49698, 0.611715, 0, 2.0715, 1.01979, 0.299938, -1.72004, 0.397327, 0.217496, 2.49698, 0.557987, 0.299938, -2.03222, 0.732276, 0.699933, -2.4149, 0.697418, 0.999871, -2.33836, 1.2748, 0.999871, -1.94813, 0.97497, 1.89945, 1.35196, -0.000262141, 2.3995, 1.35196, 0.467304, 0.999871, 2.32175, 0.567422, 0.799991, 2.42195, 0.399161, 0.470224, 2.5715, 0.405714, 0.454252, 2.5715, 0.408072, 0.437341, 2.5715, 0.405714, 0.42043, 2.5715, 0.399161, 0.404458, 2.5715, 0.388678, 0.39107, 2.5715, -0.61224, 0, 2.0715, 0.611715, 0, -1.28852, 0.375311, 0.380501, 2.5715, 0.359324, 0.373924, 2.5715, 0.342288, 0.37181, 2.5715, -0.397589, 0.217496, 2.49698, -0.000262141, 0.299938, -2.15256, 0.334687, 0, -1.47532, -0.000262141, 0.699933, -2.572, -0.000262141, 0.999871, -2.48842, -0.000262141, 2.3995, -1.52215, 0.97497, 1.89945, -1.52215, -0.975233, 1.89945, 1.35196, -1.27506, 0.999871, 2.0715, -0.467567, 0.999871, 2.32175, 0.397327, 0.657421, 2.49698, 0.342288, 0.503106, 2.5715, 0.359324, 0.500758, 2.5715, 0.375311, 0.494181, 2.5715, 0.388678, 0.483847, 2.5715, -1.02005, 0.299938, 2.0715, -0.61224, 0, -1.28852, -0.34255, 0.37181, 2.5715, -0.359586, 0.373924, 2.5715, -0.375573, 0.380501, 2.5715, -0.38894, 0.39107, 2.5715, -0.562705, 0.38238, 2.49698, -0.732538, 0.699933, -2.4149, -0.000262141, 0, -1.54733, -0.33495, 0, -1.47532, -0.558249, 0.299938, -2.03222, -0.697681, 0.999871, -2.33836, -0.975233, 1.89945, -1.52215, -1.33875, 0.699933, 2.0715, -0.562705, 0.492302, 2.49698, -0.567685, 0.799991, 2.42195, -1.27506, 0.999871, -1.94813, -0.397589, 0.657421, 2.49698, -0.34255, 0.503106, 2.5715, -1.02005, 0.299938, -1.72004, -0.399423, 0.404458, 2.5715, -0.405976, 0.42043, 2.5715, -0.408334, 0.437341, 2.5715, -1.33875, 0.699933, -2.00503, -0.405976, 0.454252, 2.5715, -0.399423, 0.470224, 2.5715, -0.38894, 0.483847, 2.5715, -0.375573, 0.494181, 2.5715, -0.359586, 0.500758, 2.5715)
 
 [node name="World" type="Node3D"]
 
@@ -95,14 +92,7 @@ speed = 3.0
 [node name="PathFollow3D" type="PathFollow3D" parent="Ships/LittleBoat"]
 transform = Transform3D(-0.596659, 0, 0.802487, 0, 1, 0, -0.802487, 0, -0.596659, -10.3359, 0, -24.4655)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ships/LittleBoat/PathFollow3D"]
-mesh = ExtResource("9_0vroe")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ships/LittleBoat/PathFollow3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ships/LittleBoat/PathFollow3D/StaticBody3D"]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_ti7fb")
+[node name="Cargo" parent="Ships/LittleBoat/PathFollow3D" instance=ExtResource("9_gk3ae")]
 
 [node name="Tug" parent="Ships" instance=ExtResource("9_2vk1n")]
 
@@ -117,8 +107,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1345, -1.42062, -29.145)
 [node name="Buoy3" parent="." instance=ExtResource("11_lux3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6409, -0.973907, 19.0892)
 
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
-
 [node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_re0rq")
 autoplay = true
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
