@@ -1,44 +1,49 @@
-extends Node
-
 class_name DeviceManager
 
-const DEVICE_COLORS = {
-	-1: Color(0.243, 0.243, 0.243, 0.482),
-	0: Color(1, 0.243, 1, 0.482),
-	1: Color(1, 1, 0.243, 0.482),
-	2: Color(0.243, 1, 0.243, 0.482),
-	3: Color(0.243, 1, 1, 0.482),
-}
+const COLOR_GREY = Color(0.243, 0.243, 0.243, 0.482)
 
-func _ready():
-	print('new device manager')
+static var device_colors = {
+	-1: COLOR_GREY,
+	0: COLOR_GREY,
+	1: COLOR_GREY,
+	2: COLOR_GREY,
+	3: COLOR_GREY,
+}
 
 static var active_devices = []
 
-static func is_device_available():
-	var connected_devices = Input.get_connected_joypads()
-	var available_devices = connected_devices.filter(
-		func(c): return not active_devices.has(c))
-	return len(available_devices) > 0
+static func activate_device(device: int, color: Color):
+	device_colors[device] = color
+	active_devices.append(device)
+
+static var assigned_devices = []
+
+static func reset():
+	for device in device_colors:
+		device_colors[device] = COLOR_GREY
+	active_devices.clear()
+	assigned_devices.clear()
 
 static func get_device():
-	var connected_devices = Input.get_connected_joypads()
-	var available_devices = connected_devices.filter(
-		func(c): return not active_devices.has(c))
+	var available_devices = active_devices.filter(
+		func(device): return not assigned_devices.has(device)
+	)
 	
-	# assert(len(available_devices) > 0, "Attempting to acquire a player without an available device")
+	if len(available_devices) == 0:
+		return null
 
-	var id = available_devices[0] if len(available_devices) > 0 else -1
-	active_devices.append(id)
+	var device = available_devices[0]
+	assigned_devices.append(device)
 	return {
-		"id": id,
+		"id": device,
 		"inputs": {
-			"UP": "P%s_UP" % id,
-			"DOWN": "P%s_DOWN" % id,
-			"LEFT": "P%s_LEFT" % id,
-			"RIGHT": "P%s_RIGHT" % id,
-			"BOOST": "P%s_BOOST" % id,
-			"JUMP": "P%s_JUMP" % id,
+			"UP": "P%s_UP" % device,
+			"DOWN": "P%s_DOWN" % device,
+			"LEFT": "P%s_LEFT" % device,
+			"RIGHT": "P%s_RIGHT" % device,
+			"BOOST": "P%s_BOOST" % device,
+			"JUMP": "P%s_JUMP" % device,
 		},
-		"color": DEVICE_COLORS[id], 
+		"color": device_colors[device], 
 	}
+	

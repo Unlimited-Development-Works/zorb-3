@@ -3,9 +3,8 @@
 [ext_resource type="Material" uid="uid://cg7rwfbhkgf3e" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
-[ext_resource type="PackedScene" uid="uid://2wa0h4xywebf" path="res://Scenes/bobby.tscn" id="3_iietq"]
 [ext_resource type="PackedScene" uid="uid://cs8yssj5qpx6s" path="res://Scenes/ring.tscn" id="4_xed4k"]
-[ext_resource type="PackedScene" uid="uid://byb4xhqjqscxc" path="res://Scenes/island.tscn" id="6_oueqa"]
+[ext_resource type="PackedScene" path="res://Scenes/island.tscn" id="6_oueqa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -17,6 +16,14 @@ size = Vector3(300, 1, 300)
 lightmap_size_hint = Vector2i(6004, 3026)
 material = ExtResource("1_1wc3b")
 size = Vector3(600, 2, 600)
+
+[sub_resource type="LabelSettings" id="LabelSettings_efmgq"]
+font_size = 100
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0.215686, 0.215686, 0.215686, 0.741176)
+shadow_offset = Vector2(8, 8)
 
 [node name="World" type="Node3D"]
 
@@ -44,13 +51,26 @@ camera_end = Vector3(0, 20, 1)
 [node name="Box" parent="." instance=ExtResource("2_ggj2q")]
 transform = Transform3D(1.93185, 0.5, 0.133974, -0.517638, 1.86603, 0.5, 0, -0.517638, 1.93185, 3.2692, 2.56261, -4.45823)
 
-[node name="Bobby" parent="." instance=ExtResource("3_iietq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
-
-[node name="Bobby2" parent="." instance=ExtResource("3_iietq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6387, 0.189334, -7.65148)
-
 [node name="Ring" parent="." instance=ExtResource("4_xed4k")]
 
 [node name="Island" parent="." instance=ExtResource("6_oueqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81366, 0)
+
+[node name="GameOverLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_efmgq")
+horizontal_alignment = 1
+vertical_alignment = 1

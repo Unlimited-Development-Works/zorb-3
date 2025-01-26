@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://2wa0h4xywebf"]
 
-[ext_resource type="Script" path="res://Scenes/arrow.gd" id="1_8gier"]
+[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_8gier"]
 [ext_resource type="ArrayMesh" uid="uid://dic1lik6uo6ch" path="res://Objects/zorb.obj" id="1_ig3sh"]
 [ext_resource type="Texture2D" uid="uid://dl2mu2w10fmc6" path="res://Graphics/brick.jpg" id="2_b26d5"]
 [ext_resource type="Script" path="res://Scripts/bobby.gd" id="2_bar0h"]
