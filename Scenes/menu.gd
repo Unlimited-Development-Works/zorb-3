@@ -5,6 +5,7 @@ const COLORS = {
 	"yellow": Color(1, 1, 0.243, 0.482),
 	"green": Color(0.243, 1, 0.243, 0.482),
 	"blue": Color(0.243, 1, 1, 0.482),
+	"red": Color(1, 0, 0, 0.482),
 }
 
 var color_availability = {
@@ -12,6 +13,7 @@ var color_availability = {
 	"yellow": true,
 	"green": true,
 	"blue": true,
+	"red": true,
 }
 
 func take_available_color():

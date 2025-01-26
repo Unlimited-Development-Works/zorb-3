@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ebpaokbudu2e"]
+[gd_scene load_steps=11 format=3 uid="uid://ebpaokbudu2e"]
 
 [ext_resource type="Texture2D" uid="uid://b1t45c5kk6845" path="res://Graphics/atlas_joypad1.tres" id="1_8103b"]
 [ext_resource type="LabelSettings" uid="uid://rctyn7i0ilog" path="res://Graphics/menu_plain_label_settings.tres" id="1_e2l2y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bngyrljhmfl4u" path="res://Graphics/atlas_joypad3.tres" id="3_ub180"]
 [ext_resource type="Texture2D" uid="uid://dq8m5en2hgmfm" path="res://Graphics/atlas_joypad4.tres" id="4_7bg5x"]
 [ext_resource type="Texture2D" uid="uid://c4g66oqsel0tv" path="res://Graphics/atlas_joypadA.tres" id="6_n4cdt"]
+[ext_resource type="Texture2D" uid="uid://midgo0vsyyrj" path="res://Graphics/atlas_joypad5.tres" id="6_rxo5w"]
 [ext_resource type="Texture2D" uid="uid://d1ya0jmldtx5k" path="res://Graphics/atlas_joypad_start.tres" id="8_u7dgf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vty6"]
@@ -78,6 +79,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 texture = ExtResource("4_7bg5x")
+
+[node name="Joypad4" type="TextureRect" parent="MenuList/JoypadList"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("6_rxo5w")
 
 [node name="JoinPrompt" type="HFlowContainer" parent="MenuList"]
 layout_mode = 2

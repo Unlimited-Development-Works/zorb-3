@@ -8,6 +8,7 @@ var game_over: bool = false
 
 var changing_scene: bool = false
 var game_over_label: Label = null
+var game_over_ui: Control = null
 var win_label: Label = null
 
 func _ready() -> void:
@@ -32,6 +33,7 @@ func _on_world_ready():
 
 func init_game(player_count):
 	var level = get_tree().root.get_node("/root/World")
+	game_over_ui = level.get_node("%GameOverUI")
 	game_over_label = level.get_node("%GameOverLabel")
 	win_label = level.get_node("%WinLabel")
 	players.clear()
@@ -50,10 +52,12 @@ func _process(delta: float) -> void:
 	if not pregame and not game_over:
 		var players_left = players.filter(func (node): return is_instance_valid(node))
 		if len(players_left) == 1:
+			var winner = players_left[0].get_player_device()
 			win_label.show()
-			win_label.text = "Player %d wins!" % players_left[0].get_player_device()
+			win_label.text = "Player %d wins!" % (winner + 1)
+			win_label.label_settings.font_color = DeviceManager.device_colors[winner]
 		if len(players_left) < 2:
-			game_over_label.show()
+			game_over_ui.show()
 			game_over = true
 	if game_over:
 		if DeviceManager.active_devices.any(func (device): return Input.is_joy_button_pressed(device, JOY_BUTTON_START)):
