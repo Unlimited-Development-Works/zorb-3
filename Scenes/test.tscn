@@ -1,22 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=12 format=3 uid="uid://chfby6taf7iy8"]
 
-[ext_resource type="Material" uid="uid://cg7rwfbhkgf3e" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
+[ext_resource type="Material" uid="uid://br6ydo7wjs88m" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
 [ext_resource type="PackedScene" uid="uid://2wa0h4xywebf" path="res://Scenes/bobby.tscn" id="3_iietq"]
 [ext_resource type="PackedScene" uid="uid://cs8yssj5qpx6s" path="res://Scenes/ring.tscn" id="4_xed4k"]
+[ext_resource type="Script" path="res://Scripts/Water.gd" id="6_l3l5m"]
 [ext_resource type="PackedScene" uid="uid://byb4xhqjqscxc" path="res://Scenes/island.tscn" id="6_oueqa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hcj3v"]
-size = Vector3(300, 1, 300)
-
 [sub_resource type="BoxMesh" id="BoxMesh_d8ydw"]
 lightmap_size_hint = Vector2i(6004, 3026)
 material = ExtResource("1_1wc3b")
 size = Vector3(600, 2, 600)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcj3v"]
+size = Vector3(300, 1, 300)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_01jdx"]
+size = Vector3(300, 1, 300)
 
 [node name="World" type="Node3D"]
 
@@ -24,12 +28,12 @@ size = Vector3(600, 2, 600)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47495, 0)
 physics_material_override = SubResource("PhysicsMaterial_bx05t")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719727, 0, 0)
-shape = SubResource("BoxShape3D_hcj3v")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
 mesh = SubResource("BoxMesh_d8ydw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, -0.05, 0)
+shape = SubResource("BoxShape3D_hcj3v")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -3, 5, 3)
@@ -52,5 +56,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6387, 0.189334, -7.65148)
 
 [node name="Ring" parent="." instance=ExtResource("4_xed4k")]
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47495, 0)
+script = ExtResource("6_l3l5m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_01jdx")
+
 [node name="Island" parent="." instance=ExtResource("6_oueqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81366, 0)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

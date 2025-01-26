@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7bckimmqlyk4"]
+
+[ext_resource type="Script" path="res://Scripts/SplashEmitter.gd" id="1_at8s1"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h8lh3"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+velocity_pivot = Vector3(0, 1, 0)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 9.95
+initial_velocity_max = 9.95
+gravity = Vector3(0, -30, 0)
+turbulence_noise_strength = 1.98
+turbulence_influence_max = 0.77
+turbulence_initial_displacement_min = 1.0
+turbulence_initial_displacement_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnomj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0nyn1"]
+material = SubResource("StandardMaterial3D_pnomj")
+size = Vector2(0.25, 0.25)
+
+[node name="SplashEmitter" type="GPUParticles3D"]
+cast_shadow = 0
+emitting = false
+amount = 20
+lifetime = 2.01
+one_shot = true
+speed_scale = 1.37
+explosiveness = 0.81
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_h8lh3")
+draw_pass_1 = SubResource("PlaneMesh_0nyn1")
+script = ExtResource("1_at8s1")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
