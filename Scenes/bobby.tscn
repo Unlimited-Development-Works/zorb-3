@@ -29,7 +29,10 @@ pressure_coefficient = 50.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 unique_name_in_owner = true
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("2_bar0h")
+ground_y = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_pehn3")
@@ -43,4 +46,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7w5kf")
 process_callback = 0
 one_shot = true
 
+[connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]
 [connection signal="timeout" from="RigidBody3D/BoostTimer" to="RigidBody3D" method="_on_boost_timer_timeout"]

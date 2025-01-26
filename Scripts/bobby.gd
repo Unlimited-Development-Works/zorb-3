@@ -1,7 +1,12 @@
 extends RigidBody3D
 
+class_name Bobby
+
+var splash_emitter = preload("res://Scenes/splash_emitter.tscn")
+
 var device
 var can_boost: bool = true
+var previous_linear_velocity
 
 func get_mid_vector(v1, v2):
 	return (v1 + v2)/2;
@@ -44,6 +49,7 @@ func _physics_process(_delta: float) -> void:
 		# Add counteracting force in the direction of the midpoint between the applied force
 		# direction and the opposite of the current linear velocity
 		%RigidBody3D.apply_central_force(get_mid_vector(%RigidBody3D.linear_velocity  * -1, force_vector) * 15 * turning_factor)
+	self.previous_linear_velocity = %RigidBody3D.linear_velocity
 
 func dead_test() -> void:
 	$"..".queue_free()
@@ -51,3 +57,51 @@ func dead_test() -> void:
 
 func _on_boost_timer_timeout() -> void:
 	can_boost = true
+
+func _on_body_entered(body):
+	if body is not Bobby:
+		#print("Not a bobby")
+		return;
+
+	var self_pos = Vector3(%RigidBody3D.global_position.x, 0, %RigidBody3D.global_position.z)
+	var body_pos = Vector3(body.global_position.x, 0, body.global_position.z)
+
+	var self_to_body = (body_pos - self_pos).normalized()
+	var body_to_self = self_to_body * -1
+
+	var self_lv = Vector3(%RigidBody3D.previous_linear_velocity.x, 0, %RigidBody3D.previous_linear_velocity.z)
+	var body_lv = Vector3(body.previous_linear_velocity.x, 0, body.previous_linear_velocity.z)
+
+	var self_dot = abs(self_pos.dot(self_lv))
+	var body_dot = abs(body_pos.dot(body_lv))
+
+	var self_impact_value = self_lv.length() * self_dot
+	var body_impact_value = body_lv.length() * body_dot
+
+	#print("Self", self_pos, self_to_body, self_lv, ",", self_lv.length(), ",", self_dot, ",",self_impact_value)
+	#print("Body", body_pos, body_to_self, body_lv, ",", body_lv.length(), ",", body_dot, ",", body_impact_value)
+
+	if self_impact_value >= body_impact_value and body_impact_value > 0:
+		# You're the winner, or the winning impact value is 0 or less in which case nothing happens 
+		return
+
+	# You've lost and you're getting knocked back
+
+	# Todo apply force at point of collison rather than centrally
+	const KNOCKBACK_MULTIPLIER = 3
+	%RigidBody3D.apply_central_impulse((body_to_self * body_lv.length() * KNOCKBACK_MULTIPLIER).clamp(Vector3(-40, 0, -40), Vector3(40 ,0, 40)))
+
+func splash():
+	var bobby = self.get_parent()
+	# Only splash if you're going fast enough in the x-z plane OR going fast enough in the Y axis
+	# (Do not splash when not moving)
+	var lv = self.get_linear_velocity()
+	const SPLASH_THRESHOLD = 8
+	var splash_value = max(Vector3(lv.x, 0, lv.z).length(), lv.y)
+	var can_splash = splash_value > SPLASH_THRESHOLD
+	if (not can_splash):
+		return
+	var splash_emitter_inst = splash_emitter.instantiate()
+	splash_emitter_inst.amount = int(splash_value * 1.5) - SPLASH_THRESHOLD
+	bobby.add_child(splash_emitter_inst)
+	splash_emitter_inst.set_global_position(%RigidBody3D.get_global_position())
