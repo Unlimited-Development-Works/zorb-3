@@ -12,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://chb0wt5uuv2xl" path="res://Objects/ships/boat_001.obj" id="9_0vroe"]
 [ext_resource type="PackedScene" uid="uid://3v5wn44rmys1" path="res://Scenes/ships/tug.tscn" id="9_2vk1n"]
 [ext_resource type="PackedScene" uid="uid://cxga0ew8yncwb" path="res://Scenes/buoy.tscn" id="11_lux3v"]
+[ext_resource type="AudioStream" uid="uid://bw3rnduserv5a" path="res://Audio/Wacky Waiting.ogg" id="7_re0rq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -117,3 +118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1345, -1.42062, -29.145)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6409, -0.973907, 19.0892)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_re0rq")
+autoplay = true
