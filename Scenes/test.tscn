@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://chfby6taf7iy8"]
+[gd_scene load_steps=10 format=3 uid="uid://chfby6taf7iy8"]
 
 [ext_resource type="Material" uid="uid://cg7rwfbhkgf3e" path="res://Graphics/water_shader.tres" id="1_1wc3b"]
 [ext_resource type="PackedScene" uid="uid://2eh3nosun1t3" path="res://Scenes/box.tscn" id="2_ggj2q"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_i3yo8"]
 [ext_resource type="PackedScene" uid="uid://2wa0h4xywebf" path="res://Scenes/bobby.tscn" id="3_iietq"]
 [ext_resource type="PackedScene" uid="uid://cs8yssj5qpx6s" path="res://Scenes/ring.tscn" id="4_xed4k"]
+[ext_resource type="PackedScene" uid="uid://byb4xhqjqscxc" path="res://Scenes/island.tscn" id="6_oueqa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bx05t"]
 friction = 0.75
@@ -50,3 +51,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4271, 2.77652, -2.00379)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6387, 0.189334, -7.65148)
 
 [node name="Ring" parent="." instance=ExtResource("4_xed4k")]
+
+[node name="Island" parent="." instance=ExtResource("6_oueqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81366, 0)

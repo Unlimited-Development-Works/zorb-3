@@ -41,6 +41,7 @@ unique_name_in_owner = true
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("2_bar0h")
+ground_y = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_pehn3")
