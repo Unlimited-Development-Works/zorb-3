@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2wa0h4xywebf"]
+[gd_scene load_steps=14 format=3 uid="uid://2wa0h4xywebf"]
 
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_8gier"]
 [ext_resource type="ArrayMesh" uid="uid://dic1lik6uo6ch" path="res://Objects/zorb.obj" id="1_ig3sh"]
